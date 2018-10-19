@@ -6,4 +6,4 @@ A very simple example of a microservice architecture taking advantage of Spring 
 - [ ] Let the microservice discoverable by Eureka
 - [ ] Handle requests through Zuul Gateway
 
-
+[http://localhost:8585/users](http://localhost:8585/users)

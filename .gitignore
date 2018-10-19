@@ -10,6 +10,7 @@
 /.project
 /.classpath
 /.idea
-/SimpleSwingApp.iml
+/*.iml
 /nb-configuration.xml
 /nbactions-release-profile.xml
+
