@@ -21,10 +21,10 @@ public class MicroserviceUsersApplication {
     @LoadBalanced
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
-        final FilterRegistrationBean<CorsFilter> bean;        
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();        
+        final FilterRegistrationBean<CorsFilter> bean;
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        
+
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
@@ -36,7 +36,7 @@ public class MicroserviceUsersApplication {
         config.addAllowedMethod("DELETE");
         config.addAllowedMethod("PATCH");
         source.registerCorsConfiguration("/**", config);
-        
+
         bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(0);
 
