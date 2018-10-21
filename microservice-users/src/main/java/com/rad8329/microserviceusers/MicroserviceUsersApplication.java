@@ -2,10 +2,9 @@ package com.rad8329.microserviceusers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -18,12 +17,14 @@ public class MicroserviceUsersApplication {
     public static void main(String[] args) {
         SpringApplication.run(MicroserviceUsersApplication.class, args);
     }
-    
+
     @LoadBalanced
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final FilterRegistrationBean<CorsFilter> bean;        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();        
         CorsConfiguration config = new CorsConfiguration();
+        
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
@@ -35,8 +36,8 @@ public class MicroserviceUsersApplication {
         config.addAllowedMethod("DELETE");
         config.addAllowedMethod("PATCH");
         source.registerCorsConfiguration("/**", config);
-
-        final FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(source));
+        
+        bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(0);
 
         return bean;
